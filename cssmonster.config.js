@@ -1,5 +1,5 @@
 module.exports = {
-    outDir: "./public/css",
+    outDir: "./_compiled/css",
     sources: "./src",
     minify: true,
     purge: false,
