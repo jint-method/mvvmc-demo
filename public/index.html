@@ -12,6 +12,8 @@
     <link href="./assets/layout.css" rel="stylesheet" />
     <link href="./assets/select-component.css" rel="stylesheet" />
     <link href="./assets/input-component.css" rel="stylesheet" />
+    <link href="./assets/shop-view.css" rel="stylesheet" />
+    <link href="./assets/buttons.css" rel="stylesheet" />
 
     <script type="module" src="./assets/bootstrap.mjs"></script>
 </head>
@@ -26,10 +28,11 @@
                     <span>T</span>
                 </i>
             </a>
+            <button class="button -text -primary">view cart</button>
         </div>
     </header>
     <main>
-        <form class="mb-auto p-1 bg-white border-1 border-solid border-grey-300 radius-0.5">
+        <form class="mb-auto p-1 bg-white border-1 border-solid border-grey-300 radius-0.5" style="position: sticky;top: 8rem;">
             <div class="w-full pb-1.5" flex="justify-between items-center">
                 <h2 class="font-grey-800 font-medium">Filters</h2>
                 <button type="reset" class="font-xs font-primary-700 cursor-pointer">Reset Filters</button>
@@ -65,7 +68,7 @@
                 </i>
             </shop-sort-filter>
         </form>
-        <shop-view></shop-view>
+        <shop-view web-component></shop-view>
     </main>
 </body>
 </html>

@@ -2,7 +2,7 @@
   "scripts": {
     "reset": "rm -rf ./_compiled",
     "brixi": "brixi",
-    "build": "npm run reset && tsc && cssmonster && djinnjs && npm run reset",
+    "build": "npm run reset && tsc && cssmonster && djinnjs -e dev && npm run reset",
     "preview": "serve ./public",
     "bundle": "snowpack install"
   },

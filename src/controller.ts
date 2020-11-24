@@ -1,3 +1,5 @@
+import { message } from "wwibs";
+
 class Store{
     private worker: Worker;
 
@@ -7,10 +9,20 @@ class Store{
     }
 
     private workerInbox(e:MessageEvent){
-        const message = e.data;
-        switch (message.type){
+        const msg = e.data;
+        switch (msg.type){
+            case "render":
+                message({
+                    recipient: "store",
+                    type: "render",
+                    data: {
+                        products: msg.data,
+                    },
+                    maxAttempts: Infinity,
+                });
+                break;
             default:
-                console.warn(`Unknown store inbox message type: ${message.type}`);
+                console.warn(`Unknown store inbox message type: ${msg.type}`);
                 break;
         }
     }

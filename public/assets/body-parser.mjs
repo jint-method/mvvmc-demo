@@ -1,1 +1,14 @@
-import{djinnjsOutDir as t}from"./config.mjs";export async function parse(o){let c=[];if(o.querySelectorAll("[css]").forEach(t=>{const o=t.getAttribute("css").split(/\s+/g);c=[...c,...o]}),c.length){const{fetchCSS:o}=await import(`${location.origin}/${t}/fetch.mjs`);await o(c)}}
+import { djinnjsOutDir } from "./config.mjs";
+export async function parse(el) {
+    let files = [];
+    el.querySelectorAll("[css]").forEach(el => {
+        const attr = el.getAttribute("css");
+        const strings = attr.split(/\s+/g);
+        files = [...files, ...strings];
+    });
+    if (files.length) {
+        const { fetchCSS } = await import(`${location.origin}/${djinnjsOutDir}/fetch.mjs`);
+        await fetchCSS(files);
+    }
+    return;
+}

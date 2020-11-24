@@ -1,1 +1,57 @@
-onmessage=t=>{switch(t.data.type){case"parse":(async function(t){const e=t.match(/(css\=[\'\"].*?[\'\"])/gi);if(null===e||0===e.length)return[];const s=[];e&&e.map(t=>{const e=t.replace(/(css\=[\'\"])|[\'\"]$/g,"").trim().split(/\s+/g);e&&e.map(t=>{const e=t.trim().toLowerCase().replace(/(\.css)$/g,"");""!==e&&s.push(e)})});const a=[];for(let t=0;t<s.length;t++){let e=!0;for(let l=0;l<a.length;l++)s[t]===a[l]&&(e=!1);e&&a.push(s[t])}return a})(t.data.body).then(e=>{var s,a;postMessage({type:"load",files:e,requestUid:null!==(a=null===(s=t.data)||void 0===s?void 0:s.requestUid)&&void 0!==a?a:null})})}};
+/**
+ * Parses HTML and collects all requested CSS files.
+ * @param body - the body text to be parsed
+ */
+async function parseCSS(body) {
+    const matches = body.match(/(css\=[\'\"].*?[\'\"])/gi);
+    if (matches === null || matches.length === 0) {
+        return [];
+    }
+    const files = [];
+    if (matches) {
+        matches.map((match) => {
+            const clean = match.replace(/(css\=[\'\"])|[\'\"]$/g, "");
+            const filenames = clean.trim().split(/\s+/g);
+            if (filenames) {
+                filenames.map(filename => {
+                    const cleanFilename = filename
+                        .trim()
+                        .toLowerCase()
+                        .replace(/(\.css)$/g, "");
+                    if (cleanFilename !== "") {
+                        files.push(cleanFilename);
+                    }
+                });
+            }
+        });
+    }
+    const uniqueFiles = [];
+    for (let i = 0; i < files.length; i++) {
+        let isUnique = true;
+        for (let k = 0; k < uniqueFiles.length; k++) {
+            if (files[i] === uniqueFiles[k]) {
+                isUnique = false;
+            }
+        }
+        if (isUnique) {
+            uniqueFiles.push(files[i]);
+        }
+    }
+    return uniqueFiles;
+}
+/** Incoming request from the Runtime class. */
+onmessage = (e) => {
+    switch (e.data.type) {
+        case "parse":
+            parseCSS(e.data.body).then(data => {
+                var _a, _b;
+                // @ts-ignore
+                postMessage({
+                    type: "load",
+                    files: data,
+                    requestUid: (_b = (_a = e.data) === null || _a === void 0 ? void 0 : _a.requestUid) !== null && _b !== void 0 ? _b : null,
+                });
+            });
+            break;
+    }
+};

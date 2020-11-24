@@ -1,1 +1,61 @@
-export function handleInlineScripts(e){const t=[];for(let r=0;r<e.length;r++)t.push(document.documentElement.querySelector(e[r]));for(let e=0;e<t.length;e++)t[e].querySelectorAll("script").forEach(e=>{const t=document.createElement("script");if(t.type=e.type,t.noModule=e.noModule,t.crossOrigin=e.crossOrigin,t.integrity=e.integrity,t.nonce=e.nonce,t.referrerPolicy=e.referrerPolicy,"module"!==t.type&&(e.async?t.async=!0:t.defer=!0),(null==e?void 0:e.src)||(null==e?void 0:e.id)||e.getAttribute("pjax-script-id")){let r="script";r+=`[src="${null==e?void 0:e.src}"]`||"#"+(null==e?void 0:e.id)||`[pjax-script-id="${e.getAttribute("pjax-script-id")}"]`;const n=document.head.querySelector(r);if(n){null===e.getAttribute("pjax-prevent-remount")&&(n.remove(),t.src=e.src,document.head.appendChild(t))}else t.src=e.src,document.head.appendChild(t)}else t.innerHTML=e.innerHTML,document.head.appendChild(t)})}export function scrollOrResetPage(){if(window.location.hash){const e=document.body.querySelector(window.location.hash);if(e)return void e.scrollIntoView()}window.scrollTo(0,0)}
+/**
+ * Looks through the new HTML for any inline scripts and attempts to append them to the documents head.
+ */
+export function handleInlineScripts(selectors) {
+    const views = [];
+    for (let i = 0; i < selectors.length; i++) {
+        views.push(document.documentElement.querySelector(selectors[i]));
+    }
+    for (let i = 0; i < views.length; i++) {
+        views[i].querySelectorAll("script").forEach(script => {
+            const newScript = document.createElement("script");
+            newScript.type = script.type;
+            newScript.noModule = script.noModule;
+            newScript.crossOrigin = script.crossOrigin;
+            newScript.integrity = script.integrity;
+            newScript.nonce = script.nonce;
+            newScript.referrerPolicy = script.referrerPolicy;
+            if (newScript.type !== "module") {
+                if (script.async) {
+                    newScript.async = true;
+                }
+                else {
+                    newScript.defer = true;
+                }
+            }
+            if ((script === null || script === void 0 ? void 0 : script.src) || (script === null || script === void 0 ? void 0 : script.id) || script.getAttribute("pjax-script-id")) {
+                let scriptSelector = "script";
+                scriptSelector += `[src="${script === null || script === void 0 ? void 0 : script.src}"]` || `#${script === null || script === void 0 ? void 0 : script.id}` || `[pjax-script-id="${script.getAttribute("pjax-script-id")}"]`;
+                const existingScript = document.head.querySelector(scriptSelector);
+                if (existingScript) {
+                    const preventRemount = script.getAttribute("pjax-prevent-remount");
+                    if (preventRemount === null) {
+                        existingScript.remove();
+                        newScript.src = script.src;
+                        document.head.appendChild(newScript);
+                    }
+                }
+                else {
+                    newScript.src = script.src;
+                    document.head.appendChild(newScript);
+                }
+            }
+            else {
+                newScript.innerHTML = script.innerHTML;
+                document.head.appendChild(newScript);
+            }
+        });
+    }
+}
+export function scrollOrResetPage() {
+    if (window.location.hash) {
+        /** Scroll to hash element */
+        const element = document.body.querySelector(window.location.hash);
+        if (element) {
+            element.scrollIntoView();
+            return;
+        }
+    }
+    /** Scroll to top of page */
+    window.scrollTo(0, 0);
+}

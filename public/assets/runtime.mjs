@@ -1,1 +1,62 @@
-import{djinnjsOutDir as n}from"./config.mjs";import{parse as t}from"./body-parser.mjs";let e=null,o=null,i=null;new class{constructor(){this.init(),document.addEventListener("djinn:use-full",()=>{sessionStorage.setItem("connection-choice","full"),o.collectWebComponents()}),document.addEventListener("djinn:use-lite",()=>{sessionStorage.setItem("connection-choice","lite"),o.collectWebComponents()}),document.addEventListener("djinn:mount-components",this.mountComponents),document.addEventListener("djinn:mount-scripts",n=>{this.mountScripts(n.detail.selectors)}),document.addEventListener("djinn:parse",n=>{this.parseCSS(n.detail.body,n.detail.requestUid)})}async init(){await t(document.documentElement),await this.setup(),await this.finalize(),this.mountComponents()}async finalize(){const t=await import(`${location.origin}/${n}/web-component-manager.mjs`);o=new t.WebComponentManager,e.setDOMState("idling"),i=await import(`${location.origin}/${n}/djinn-utils.mjs`),i.scrollOrResetPage()}async setup(){const t=await import(`${location.origin}/${n}/env.mjs`);e=t.env}async parseCSS(n,e=null){const o=document.implementation.createHTMLDocument("djinn-temp-document");o.documentElement.innerHTML=n,await t(o.documentElement);const i=new CustomEvent("pjax:continue",{detail:{requestUid:e}});document.dispatchEvent(i)}mountComponents(){o.collectWebComponents()}async mountScripts(n){i.handleInlineScripts(n)}};
+import { djinnjsOutDir } from "./config.mjs";
+import { parse } from "./body-parser.mjs";
+let env = null;
+let webComponentManager = null;
+let utils = null;
+class Djinn {
+    constructor() {
+        this.init();
+        document.addEventListener("djinn:use-full", () => {
+            sessionStorage.setItem("connection-choice", "full");
+            webComponentManager.collectWebComponents();
+        });
+        document.addEventListener("djinn:use-lite", () => {
+            sessionStorage.setItem("connection-choice", "lite");
+            webComponentManager.collectWebComponents();
+        });
+        document.addEventListener("djinn:mount-components", this.mountComponents);
+        document.addEventListener("djinn:mount-scripts", (e) => {
+            this.mountScripts(e.detail.selectors);
+        });
+        document.addEventListener("djinn:parse", (e) => {
+            this.parseCSS(e.detail.body, e.detail.requestUid);
+        });
+    }
+    async init() {
+        await parse(document.documentElement);
+        await this.setup();
+        await this.finalize();
+        this.mountComponents();
+    }
+    async finalize() {
+        const wcmModule = await import(`${location.origin}/${djinnjsOutDir}/web-component-manager.mjs`);
+        webComponentManager = new wcmModule.WebComponentManager();
+        env.setDOMState("idling");
+        utils = await import(`${location.origin}/${djinnjsOutDir}/djinn-utils.mjs`);
+        utils.scrollOrResetPage();
+        
+        
+    }
+    async setup() {
+        const envModule = await import(`${location.origin}/${djinnjsOutDir}/env.mjs`);
+        env = envModule.env;
+    }
+    async parseCSS(html, requestUid = null) {
+        const tempDocument = document.implementation.createHTMLDocument("djinn-temp-document");
+        tempDocument.documentElement.innerHTML = html;
+        await parse(tempDocument.documentElement);
+        const event = new CustomEvent("pjax:continue", {
+            detail: {
+                requestUid: requestUid,
+            },
+        });
+        document.dispatchEvent(event);
+    }
+    mountComponents() {
+        webComponentManager.collectWebComponents();
+    }
+    async mountScripts(selectors) {
+        utils.handleInlineScripts(selectors);
+    }
+}
+new Djinn();

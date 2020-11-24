@@ -5,7 +5,8 @@
         "allowJs": true,
         "checkJs": false,
         "lib": ["DOM", "ES2019"],
-        "outDir": "./_compiled/js"
+        "outDir": "./_compiled/js",
+        "moduleResolution": "Node",
     },
     "include": ["./src", "./web_modules"]
 }

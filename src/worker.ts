@@ -56,7 +56,7 @@ class StoreWorker{
         if (request.ok){
             const response = await request.json();
             this.state.products = response;
-
+            this.sendMessage("render", this.state.products);
         }else{
             console.error(`Failed to fetch products from API. Server responded with: ${request.status}:${request.statusText}`);
         }
