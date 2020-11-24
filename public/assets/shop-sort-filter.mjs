@@ -1,0 +1,1 @@
+import{updateCategory as e}from"./controller.mjs";export default class t extends HTMLElement{constructor(){super(),this.handleInput=()=>{e(this.input.value)},this.input=this.querySelector("select")}connectedCallback(){this.input.addEventListener("change",this.handleInput)}disconenctedCallback(){this.input.removeEventListener("change",this.handleInput)}}
