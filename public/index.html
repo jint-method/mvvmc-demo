@@ -11,6 +11,7 @@
     <link href="./assets/normalize.css" rel="stylesheet" />
     <link href="./assets/layout.css" rel="stylesheet" />
     <link href="./assets/select-component.css" rel="stylesheet" />
+    <link href="./assets/input-component.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -26,9 +27,17 @@
         </div>
     </header>
     <main>
-        <aside>
-            <select-component web-component>
-                <label for="category">Category</label>
+        <form class="mb-auto p-1 bg-white border-1 border-solid border-grey-300 radius-0.5">
+            <div class="w-full pb-1.5" flex="justify-between items-center">
+                <h2 class="font-grey-800 font-medium">Filters</h2>
+                <button type="reset" class="font-xs font-primary-700 cursor-pointer">Reset Filters</button>
+            </div>
+            <input-component web-component class="mb-1.5">
+                <label for="search">Search</label>
+                <input type="search" id="search" autocapitalize="off" autocomplete="off" />
+            </input-component>
+            <select-component web-component class="mb-1.5">
+                <label for="category">Filter by Category</label>
                 <select id="category">
                     <option value=""></option>
                     <option value="dairy">Dairy</option>
@@ -41,7 +50,19 @@
                     <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path></svg>
                 </i>
             </select-component>
-        </aside>
+            <select-component web-component>
+                <label for="sort">Sort</label>
+                <select id="sort">
+                    <option value="price-lh">Price Low to High</option>
+                    <option value="price-hl">Price High to Low</option>
+                    <option value="rating-hl">Rating High to Low</option>
+                    <option value="rating-lh">Rating Low to High</option>
+                </select>
+                <i>
+                    <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path></svg>
+                </i>
+            </select-component>
+        </form>
         <shop-view></shop-view>
     </main>
 </body>
