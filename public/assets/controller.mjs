@@ -22,16 +22,14 @@ class Store {
                 break;
         }
     }
-    sendMessage(type, data) {
+    sendMessage(type, data = null) {
         this.worker.postMessage({
             type: type,
             data: data,
         });
     }
     search(query) {
-        if (query.length) {
-            this.sendMessage("search", query.trim());
-        }
+        this.sendMessage("search", query.trim());
     }
     sort(sort) {
         this.sendMessage("sort", sort);
@@ -39,9 +37,13 @@ class Store {
     updateCategory(category) {
         this.sendMessage("category", category);
     }
+    reset() {
+        this.sendMessage("reset");
+    }
 }
 const store = new Store();
 const search = store.search.bind(store);
 const sort = store.sort.bind(store);
 const updateCategory = store.updateCategory.bind(store);
-export { store, search, sort, updateCategory };
+const reset = store.reset.bind(store);
+export { store, search, sort, updateCategory, reset };

@@ -1,8 +1,6 @@
 product-card{
-    background-color: var(--white);
-    border: 1px solid var(--grey-300);
-    border-radius: 0.5rem;
-    padding: 1rem 1rem calc(36px + 2.5rem);
+    padding: 1rem 1rem calc(36px + 2rem);
+    user-select: none;
     
     img-shim{
         display: block;
@@ -43,31 +41,9 @@ product-card{
         }
     }
 
-    h2{
-        display: block;
-        width: 100%;
-        line-height: 1.375;
-        font-weight: bold;
-        font-size: var(--font-md);
-        color: var(--grey-800);
-        margin-bottom: 0.25rem;
-        user-select: none;
-        text-transform: capitalize;
-    }
-
-    p{
-        display: block;
-        width: 100%;
-        line-height: 1.618;
-        color: var(--grey-700);
-        font-size: var(--font-xs);
-        user-select: none;
-    }
-
     button{
         position: absolute;
         bottom: 1rem;
         left: 1rem;
-        width: calc(100% - 2rem);
     }
 }

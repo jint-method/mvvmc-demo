@@ -35,6 +35,7 @@ export default class ShopView extends Component {
     }
     render() {
         let view = null;
+        const priceFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
         switch (this.state.view) {
             case "loading":
                 view = html `
@@ -49,21 +50,23 @@ export default class ShopView extends Component {
                         ${this.state.products.map((product, index) => {
                     if (index < this.state.page * 9 + 9) {
                         return html `
-                                    <product-card>
+                                    <product-card class="bg-white border-1 border-solid border-grey-300 radius-0.5">
                                         <img-shim>
                                             <img draggable="false" src="/images/${product.filename}" alt="image of ${product.title}" />
                                         </img-shim>
-                                        <h2>${product.title}</h2>
-                                        <p>${product.description}</p>
-                                        <button class="button -solid -primary">add to cart</button>
+                                        <h2 class="w-full line-snug text-capitalize font-medium" flex="justify-between row nowrap">
+                                            <span style="flex: 1;" class="inline-block font-grey-800">${product.title}</span>
+                                            <span class="inline-block font-primary-700 ml-1">${priceFormatter.format(product.price)}</span>
+                                        </h2>
+                                        <button class="button -outline -primary">add to cart</button>
                                     </product-card>
                                 `;
                     }
                 })}
                     </div>
                     ${this.state.page < this.state.totalPages ? html `
-                        <div class="block w-full text-center mt-2">
-                            <load-more-button role="button" tabindex="0" class="button -outline -primary">load more products</load-more-button>
+                        <div class="block w-full text-center mt-3">
+                            <load-more-button role="button" tabindex="0" class="button -solid -primary -rounded">load more products</load-more-button>
                         </div>
                     ` : null}
                 `;

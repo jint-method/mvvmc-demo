@@ -1,10 +1,10 @@
-import { updateCategory } from "./controller.mjs";
+import { sort } from "./controller.mjs";
 export default class ShopSortFilter extends HTMLElement {
     constructor() {
         super();
         this.handleInput = () => {
-            // @ts-ignore
-            updateCategory(this.input.value);
+            // @ts-expect-error
+            sort(this.input.value);
         };
         this.input = this.querySelector("select");
     }

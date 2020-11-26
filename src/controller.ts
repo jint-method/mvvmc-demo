@@ -27,7 +27,7 @@ class Store{
         }
     }
 
-    private sendMessage(type:string, data:any):void{
+    private sendMessage(type:string, data:any = null):void{
         this.worker.postMessage({
             type: type,
             data: data,
@@ -35,9 +35,7 @@ class Store{
     }
 
     public search(query:string):void{
-        if (query.length){
-            this.sendMessage("search", query.trim());
-        }
+        this.sendMessage("search", query.trim());
     }
 
     public sort(sort:string):void{
@@ -47,9 +45,14 @@ class Store{
     public updateCategory(category:string):void{
         this.sendMessage("category", category);
     }
+
+    public reset():void{
+        this.sendMessage("reset");
+    }
 }
 const store = new Store();
 const search:(query:string)=>void = store.search.bind(store);
 const sort:(sortType:"price-hl" | "price-lh" | "rating-hl" | "rating-lh")=>void = store.sort.bind(store);
 const updateCategory:(category: "dairy" | "fruit" | "vegetable" | "bakery" | "meat")=>void = store.updateCategory.bind(store);
-export { store, search, sort, updateCategory };
+const reset:()=>void = store.reset.bind(store);
+export { store, search, sort, updateCategory, reset };

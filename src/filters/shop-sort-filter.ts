@@ -1,4 +1,4 @@
-import { updateCategory } from "../controller";
+import { sort } from "../controller";
 
 export default class ShopSortFilter extends HTMLElement{
     private input: HTMLSelectElement;
@@ -9,8 +9,8 @@ export default class ShopSortFilter extends HTMLElement{
     }
 
     private handleInput:EventListener = ()=>{
-        // @ts-ignore
-        updateCategory(this.input.value);
+        // @ts-expect-error
+        sort(this.input.value);
     }
 
     connectedCallback(){
