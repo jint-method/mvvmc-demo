@@ -73,7 +73,7 @@ export default class ShopView extends Component<IShopViewState>{
                                             </img-shim>
                                             <h2 class="w-full line-snug text-capitalize font-medium" flex="justify-between row nowrap">
                                                 <span style="flex: 1;" class="inline-block font-grey-800">${product.title}</span>
-                                                <span class="inline-block font-primary-700 ml-1">${priceFormatter.format(product.price)}</span>
+                                                <span class="inline-block font-success-700 ml-1">${priceFormatter.format(product.price)}</span>
                                             </h2>
                                             <div class="rating" aria-label="rated ${product.rating}/5">
                                                 ${Array.apply(null, Array(product.rating)).map(() => {
@@ -86,11 +86,11 @@ export default class ShopView extends Component<IShopViewState>{
                                             <product-description>${product.description}</product-description>
                                         </card-content>
                                         <div class="actions-container" flex="justify-between items-center">
-                                            <button class="js-add-to-cart-button button -outline -primary">add to cart</button>
-                                            <button class="js-description-button button -outline -grey -icon-only -round" title="view description" aria-label="view description">
+                                            <button class="js-add-to-cart-button button -outline -black">add to cart</button>
+                                            <button class="js-description-button button -outline -black -icon-only -round" title="view description" aria-label="view description">
                                                 <i>
-                                                    <svg style="width:14px;height:14px;" class="font-grey-500 -info" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"><path fill="currentColor" d="M20 424.229h20V279.771H20c-11.046 0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z"></path></svg>
-                                                    <svg class="font-grey-500 -close" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"></path></svg>
+                                                    <svg style="width:14px;height:14px;" class="-info" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"><path fill="currentColor" d="M20 424.229h20V279.771H20c-11.046 0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z"></path></svg>
+                                                    <svg class="-close" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"></path></svg>
                                                 </i>
                                             </button>
                                         </div>
