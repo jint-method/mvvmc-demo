@@ -63,6 +63,8 @@ export default class ShopView extends Component<IShopViewState>{
                     <div class="container">
                         ${this.state.products.map((product, index) => {
                             if (index < this.state.page * 9 + 9){
+                                const diff = 5 - product.rating;
+                                console.log(Array(product.rating));
                                 return html`
                                     <product-card class="bg-white border-1 border-solid border-grey-300 radius-0.5" view="primary">
                                         <card-content class="block w-full h-full">
@@ -73,6 +75,14 @@ export default class ShopView extends Component<IShopViewState>{
                                                 <span style="flex: 1;" class="inline-block font-grey-800">${product.title}</span>
                                                 <span class="inline-block font-primary-700 ml-1">${priceFormatter.format(product.price)}</span>
                                             </h2>
+                                            <div class="rating" aria-label="rated ${product.rating}/5">
+                                                ${Array.apply(null, Array(product.rating)).map(() => {
+                                                    return html`<svg class="-solid" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>`;
+                                                })}
+                                                ${Array.apply(null, Array(diff)).map(() => {
+                                                    return html`<svg class="-outline" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"></path></svg>`;
+                                                })}
+                                            </div>
                                             <product-description>${product.description}</product-description>
                                         </card-content>
                                         <div class="actions-container" flex="justify-between items-center">

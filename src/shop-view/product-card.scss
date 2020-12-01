@@ -110,4 +110,25 @@ product-card{
             transition: all 75ms var(--ease-in-out);
         }
     }
+
+    .rating{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin-top: 0.5rem;
+
+        svg{
+            width: 14px;
+            height: 14px;
+            margin-right: 0.25rem;
+
+            &.-solid{
+                color: var(--warning-500);
+            }
+
+            &.-outline{
+                color: var(--grey-500);
+            }
+        }
+    }
 }

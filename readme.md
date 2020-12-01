@@ -10,7 +10,8 @@ This project showcases how an online shop could be created using the MVVMC archi
     - [x] Filter by Category
     - [x] Product card pagination
     - [x] Product card description
-    - [ ] Product card rating
+    - [x] Product card rating
+    - [ ] Add product to cart
 - [ ] Cart modal
     - [ ] Display cart items
     - [ ] Update cart item quantities
