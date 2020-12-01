@@ -19,36 +19,36 @@ header{
     z-index: 1000;
 
     #logo{
-        display: inline-block;
-        color: var(--grey-800);
-        transition: all 150ms var(--ease-in-out);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
 
-        &:hover,
-        &:focus{
-            color: var(--primary-700);
-        }
+        svg{
+            height: 64px;
 
-        &:active{
-            color: var(--primary-800);
-        }
+            &:hover,
+            &:focus{
+                .a{
+                    fill:#fda11a;
+                }
+                .b{
+                    fill:#e81a20;
+                }
+            }
 
-        strong{
-            font-weight: bolder;
-            font-size: 2rem;
-            display: flex;
-            width: 100%;
-            text-align: center;
-        }
-
-        i{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.25rem;
-            width: 100%;
-            font-style: normal;
-            padding: 0 0.25rem;
-            
+            .a,
+            .b{
+                fill: var(--grey-900);
+                transition: all 150ms var(--ease-in-out);
+            }
+            .b{
+                font-size:137.86px;
+                font-family:ComicSansMS-Bold, Comic Sans MS;
+                font-weight:700;
+            }
+            .c{
+                font-size:166.71px;
+            }
         }
     }
 }
