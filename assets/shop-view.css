@@ -1,0 +1,1 @@
+shop-view{width:100%;position:relative}shop-view[state=loading]{display:inline-flex;justify-content:center;align-items:center}shop-view[state=idling]{display:block}shop-view[state=idling] .container{display:grid}shop-view .container{display:none;grid-template-columns:1fr 1fr 1fr;gap:1rem}
