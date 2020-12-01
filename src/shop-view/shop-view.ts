@@ -69,7 +69,7 @@ export default class ShopView extends Component<IShopViewState>{
                                     <product-card class="bg-white border-1 border-solid border-grey-300 radius-0.5" view="primary">
                                         <card-content class="block w-full h-full">
                                             <img-shim>
-                                                <img draggable="false" src="/images/${product.filename}" alt="image of ${product.title}" />
+                                                <img draggable="false" src="/images/${product.filename}" alt="${product.description}" />
                                             </img-shim>
                                             <h2 class="w-full line-snug text-capitalize font-medium" flex="justify-between row nowrap">
                                                 <span style="flex: 1;" class="inline-block font-grey-800">${product.title}</span>
