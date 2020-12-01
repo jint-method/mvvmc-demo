@@ -91,8 +91,8 @@ class StoreWorker {
                 ret.push(products[i]);
             }
             else {
+                let placedProduct = false;
                 for (let k = 0; k < ret.length; k++) {
-                    let placedProduct = false;
                     switch (this.state.sort) {
                         case "price-hl":
                             if (products[i].price >= ret[k].price) {
@@ -122,9 +122,9 @@ class StoreWorker {
                     if (placedProduct) {
                         break;
                     }
-                    else if (k === ret.length - 1) {
-                        ret.push(products[i]);
-                    }
+                }
+                if (!placedProduct) {
+                    ret.push(products[i]);
                 }
             }
         }
