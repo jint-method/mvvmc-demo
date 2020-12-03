@@ -16,6 +16,8 @@ type IShopViewState = {
     products: Array<IProduct>,
 };
 
+const itemsPerPage = 16;
+
 export default class ShopView extends Component<IShopViewState>{
 
     constructor(){
@@ -37,7 +39,7 @@ export default class ShopView extends Component<IShopViewState>{
             case "render":
                 const updatedState = {...this.state};
                 updatedState.view = "idling";
-                updatedState.totalPages = Math.floor(msg.products.length / 9);
+                updatedState.totalPages = Math.floor(msg.products.length / itemsPerPage);
                 updatedState.page = 0;
                 updatedState.products = msg.products;
                 this.setState(updatedState);
@@ -62,7 +64,7 @@ export default class ShopView extends Component<IShopViewState>{
                 view = html`
                     <div class="container">
                         ${this.state.products.map((product, index) => {
-                            if (index < this.state.page * 9 + 9){
+                            if (index < this.state.page * itemsPerPage + itemsPerPage){
                                 const diff = 5 - product.rating;
                                 console.log(Array(product.rating));
                                 return html`

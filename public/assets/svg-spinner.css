@@ -1,1 +1,0 @@
-svg-spinner{display:inline-flex;justify-content:center;align-items:center;color:var(--neutral-700)}svg-spinner svg{width:18px;height:18px;animation:spinner .8s linear infinite}@keyframes spinner{from{transform:rotate(0)}to{transform:rotate(360deg)}}
