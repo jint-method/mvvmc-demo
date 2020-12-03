@@ -5,6 +5,7 @@ import { ProductCard } from "./product-card.mjs";
 customElements.define("product-card", ProductCard);
 import { LoadMoreButton } from "./load-more-button.mjs";
 customElements.define('load-more-button', LoadMoreButton);
+const itemsPerPage = 16;
 export default class ShopView extends Component {
     constructor() {
         super();
@@ -24,7 +25,7 @@ export default class ShopView extends Component {
             case "render":
                 const updatedState = { ...this.state };
                 updatedState.view = "idling";
-                updatedState.totalPages = Math.floor(msg.products.length / 9);
+                updatedState.totalPages = Math.floor(msg.products.length / itemsPerPage);
                 updatedState.page = 0;
                 updatedState.products = msg.products;
                 this.setState(updatedState);
@@ -48,7 +49,7 @@ export default class ShopView extends Component {
                 view = html `
                     <div class="container">
                         ${this.state.products.map((product, index) => {
-                    if (index < this.state.page * 9 + 9) {
+                    if (index < this.state.page * itemsPerPage + itemsPerPage) {
                         const diff = 5 - product.rating;
                         console.log(Array(product.rating));
                         return html `
