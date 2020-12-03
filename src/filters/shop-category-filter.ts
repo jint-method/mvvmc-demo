@@ -1,4 +1,4 @@
-import { updateCategory } from "../controller";
+import { updateCategory } from "../controllers/store";
 
 export default class ShopCategoryFilter extends HTMLElement{
     private input: HTMLSelectElement;

@@ -3,7 +3,7 @@ import { html, render } from "lit-html";
 import { IProduct } from "../types";
 import { Component } from "../component";
 
-import { ProductCard } from "./product-card";
+import { ProductCard } from "./product-card/product-card";
 customElements.define("product-card", ProductCard);
 
 import { LoadMoreButton } from "./load-more-button";

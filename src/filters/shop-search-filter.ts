@@ -1,4 +1,4 @@
-import { search } from "../controller";
+import { search } from "../controllers/store";
 
 export default class ShopSearchFilter extends HTMLElement{
     private input: HTMLInputElement;

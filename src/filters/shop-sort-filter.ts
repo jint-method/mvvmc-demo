@@ -1,4 +1,4 @@
-import { sort } from "../controller";
+import { sort } from "../controllers/store";
 
 export default class ShopSortFilter extends HTMLElement{
     private input: HTMLSelectElement;

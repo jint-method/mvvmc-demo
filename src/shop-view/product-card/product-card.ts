@@ -1,4 +1,4 @@
-import { Component } from "../component";
+import { Component } from "../../component";
 
 type ProductCardState = {
     view: "primary" | "secondary";

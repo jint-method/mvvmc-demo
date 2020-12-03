@@ -1,4 +1,4 @@
-import { reset } from "../controller";
+import { reset } from "../controllers/store";
 
 export default class ShopFilter extends HTMLElement{
     private form:HTMLFormElement;
