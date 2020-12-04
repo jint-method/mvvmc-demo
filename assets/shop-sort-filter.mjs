@@ -1,4 +1,4 @@
-import { sort } from "./controller.mjs";
+import { sort } from "./store.mjs";
 export default class ShopSortFilter extends HTMLElement {
     constructor() {
         super();

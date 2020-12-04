@@ -1,4 +1,4 @@
-import { reset } from "./controller.mjs";
+import { reset } from "./store.mjs";
 export default class ShopFilter extends HTMLElement {
     constructor() {
         super();

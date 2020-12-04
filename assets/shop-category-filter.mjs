@@ -1,4 +1,4 @@
-import { updateCategory } from "./controller.mjs";
+import { updateCategory } from "./store.mjs";
 export default class ShopCategoryFilter extends HTMLElement {
     constructor() {
         super();

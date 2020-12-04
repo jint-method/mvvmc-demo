@@ -1,4 +1,4 @@
-import { search } from "./controller.mjs";
+import { search } from "./store.mjs";
 export default class ShopSearchFilter extends HTMLElement {
     constructor() {
         super();
