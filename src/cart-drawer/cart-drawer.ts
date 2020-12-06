@@ -26,6 +26,9 @@ export default class CartDrawer extends Component<ICartDrawerState>{
 
     private inbox(data):void{
         switch(data.type){
+            case "remove-line-item":
+                this.removeLineItem(data.uid);
+                break;
             case "add-line-item":
                 this.addLineItem(data.lineItem);
                 break;
@@ -42,6 +45,17 @@ export default class CartDrawer extends Component<ICartDrawerState>{
                 console.warn(`Unhandled Cart Drawer message type: ${data.type}`);
                 break;
         }
+    }
+
+    private removeLineItem(uid:string):void{
+        const updatedState = {...this.state};
+        for (let i = 0; i < updatedState.lineItems.length; i++){
+            if (updatedState.lineItems[i].id === uid){
+                updatedState.lineItems.splice(i, 1);
+                break;
+            }
+        }
+        this.setState(updatedState);
     }
 
     private addLineItem(lineItem:ILineItem):void{
@@ -97,6 +111,11 @@ export default class CartDrawer extends Component<ICartDrawerState>{
                                     </i>
                                 </button>
                             </div>
+                            <button class="js-delete delete button -text -danger -round -icon-only">
+                                <i>
+                                    <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h18.9l33.2 372.3a48 48 0 0 0 47.8 43.7h232.2a48 48 0 0 0 47.8-43.7L421.1 96H440a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zm184.8 427a15.91 15.91 0 0 1-15.9 14.6H107.9A15.91 15.91 0 0 1 92 465.4L59 96h330z"></path></svg>
+                                </i>
+                            </button>
                         </line-item>
                     `;
                 })}

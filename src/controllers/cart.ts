@@ -48,8 +48,20 @@ class Cart{
             },
         });
     }
+
+    public removeLineItem(productUid:string):void{
+        delete this.lineItems[productUid];
+        message({
+            recipient: "cart",
+            type: "remove-line-item",
+            data: {
+                uid: productUid,
+            },
+        });
+    }
 }
 const cart = new Cart();
 const addLineItem: (productUid:string)=>void = cart.addLineItem.bind(cart);
 const updateLineItemQuantity: (productUid:string, qty:number)=>void = cart.updateLineItem.bind(cart);
-export { cart, addLineItem, updateLineItemQuantity };
+const removeLineItem: (productUid:string)=>void = cart.removeLineItem.bind(cart);
+export { cart, addLineItem, updateLineItemQuantity, removeLineItem };

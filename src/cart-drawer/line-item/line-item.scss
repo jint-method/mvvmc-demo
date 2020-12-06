@@ -31,4 +31,10 @@ line-item{
         display: inline-block;
         margin: 0 1.5rem;
     }
+
+    .delete{
+        position: absolute;
+        top: 0.25rem;
+        right: 0.25rem;
+    }
 }
