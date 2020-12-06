@@ -1,4 +1,4 @@
-import { updateLineItemQuantity } from "./cart.mjs";
+import { removeLineItem, updateLineItemQuantity } from "./cart.mjs";
 export class LineItem extends HTMLElement {
     constructor() {
         super();
@@ -18,11 +18,16 @@ export class LineItem extends HTMLElement {
             }
             updateLineItemQuantity(this.dataset.id, value);
         };
+        this.delete = () => {
+            removeLineItem(this.dataset.id);
+        };
         this.addButton = this.querySelector(".js-add");
         this.subtractButton = this.querySelector(".js-subtract");
+        this.deleteButton = this.querySelector(".js-delete");
     }
     connectedCallback() {
         this.addButton.addEventListener("click", this.add);
         this.subtractButton.addEventListener("click", this.subtract);
+        this.deleteButton.addEventListener("click", this.delete);
     }
 }

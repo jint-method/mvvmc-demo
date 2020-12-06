@@ -42,8 +42,19 @@ class Cart {
             },
         });
     }
+    removeLineItem(productUid) {
+        delete this.lineItems[productUid];
+        message({
+            recipient: "cart",
+            type: "remove-line-item",
+            data: {
+                uid: productUid,
+            },
+        });
+    }
 }
 const cart = new Cart();
 const addLineItem = cart.addLineItem.bind(cart);
 const updateLineItemQuantity = cart.updateLineItem.bind(cart);
-export { cart, addLineItem, updateLineItemQuantity };
+const removeLineItem = cart.removeLineItem.bind(cart);
+export { cart, addLineItem, updateLineItemQuantity, removeLineItem };
