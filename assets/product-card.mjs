@@ -1,8 +1,11 @@
 import { Component } from "./component.mjs";
+import { addLineItem } from "./cart.mjs";
 export class ProductCard extends Component {
     constructor() {
         super();
-        this.addToCart = () => { };
+        this.addToCart = () => {
+            addLineItem(this.dataset.id);
+        };
         this.toggleDescription = () => {
             this.setState({ view: this.state.view === "primary" ? "secondary" : "primary" });
         };

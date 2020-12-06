@@ -16,6 +16,7 @@
     <link href="./assets/buttons.css" rel="stylesheet" />
     <link href="./assets/svg-spinner.css" rel="stylesheet" />
     <link href="./assets/product-card.css" rel="stylesheet" />
+    <link href="./assets/open-cart-button.css" rel="stylesheet" />
 
     <script type="module" src="./assets/bootstrap.mjs"></script>
 </head>
@@ -25,7 +26,9 @@
             <a href="/" id="logo">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.31 454.89"><path class="a" d="M255.53,123.12H443.21s-8.72-94.56-178.74-94.56-196,94.56-196,94.56Z" transform="translate(-67.63 -28.56)"/><path class="a" d="M255.82,414.62H443.21s23.71,68.82-187.39,68.82S68.43,414.62,68.43,414.62Z" transform="translate(-67.63 -28.56)"/><text class="b" transform="translate(11.79 218.19)">100%<tspan class="c"><tspan x="11.73" y="145.25">EAT</tspan></tspan></text></svg>
             </a>
-            <button class="button -text -primary">view cart</button>
+            <open-cart-button web-component tabindex="0" role="button" title="open cart" aria-label="open cart">
+                <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M551.991 64H129.28l-8.329-44.423C118.822 8.226 108.911 0 97.362 0H12C5.373 0 0 5.373 0 12v8c0 6.627 5.373 12 12 12h78.72l69.927 372.946C150.305 416.314 144 431.42 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-17.993-7.435-34.24-19.388-45.868C506.022 391.891 496.76 384 485.328 384H189.28l-12-64h331.381c11.368 0 21.177-7.976 23.496-19.105l43.331-208C578.592 77.991 567.215 64 551.991 64zM240 448c0 17.645-14.355 32-32 32s-32-14.355-32-32 14.355-32 32-32 32 14.355 32 32zm224 32c-17.645 0-32-14.355-32-32s14.355-32 32-32 32 14.355 32 32-14.355 32-32 32zm38.156-192H171.28l-36-192h406.876l-40 192z"></path></svg>
+            </open-cart-button>
         </div>
     </header>
     <main>
@@ -73,5 +76,6 @@
             </svg-spinner>
         </shop-view>
     </main>
+    <cart-drawer web-component loading="eager" css="cart-drawer line-item"></cart-drawer>
 </body>
 </html>

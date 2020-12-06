@@ -51,9 +51,8 @@ export default class ShopView extends Component {
                         ${this.state.products.map((product, index) => {
                     if (index < this.state.page * itemsPerPage + itemsPerPage) {
                         const diff = 5 - product.rating;
-                        console.log(Array(product.rating));
                         return html `
-                                    <product-card class="bg-white border-1 border-solid border-grey-300 radius-0.5" view="primary">
+                                    <product-card class="bg-white border-1 border-solid border-grey-300 radius-0.5" view="primary" data-id="${product.id}">
                                         <card-content class="block w-full h-full">
                                             <img-shim>
                                                 <img draggable="false" src="/images/${product.image}" alt="${product.alt}" />

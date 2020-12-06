@@ -11,9 +11,9 @@ export function fetchCSS(filenames) {
         }
         let loaded = 0;
         for (let i = 0; i < resourceList.length; i++) {
-            const filename = resourceList[i];
+            const filename = `${resourceList[i].replace(/(\.css)$/gi, "")}.css`;
             const isUrl = new RegExp(/^(http)/gi).test(filename);
-            let el = document.head.querySelector(`link[file="${filename}"]`) || document.head.querySelector(`link[href="${filename}"]`) || null;
+            let el = document.head.querySelector(`[file="${filename}"]`) || document.head.querySelector(`link[href="${filename}"]`) || null;
             if (!el) {
                 el = document.createElement("link");
                 el.rel = "stylesheet";
@@ -22,7 +22,7 @@ export function fetchCSS(filenames) {
                 }
                 else {
                     el.setAttribute("file", `${filename}`);
-                    el.href = `${location.origin}/${djinnjsOutDir}/${filename.replace(/(\.css)$/gi, "")}.css`;
+                    el.href = `${location.origin}/${djinnjsOutDir}/${filename}`;
                 }
                 el.addEventListener("load", () => {
                     loaded++;

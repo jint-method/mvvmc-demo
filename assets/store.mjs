@@ -3,11 +3,13 @@ class Store {
     constructor() {
         this.worker = new Worker(`${location.origin}/assets/worker.mjs`);
         this.worker.onmessage = this.workerInbox.bind(this);
+        this.products = [];
     }
     workerInbox(e) {
         const msg = e.data;
         switch (msg.type) {
             case "render":
+                this.products = msg.data;
                 message({
                     recipient: "store",
                     type: "render",
@@ -40,10 +42,21 @@ class Store {
     reset() {
         this.sendMessage("reset");
     }
+    getProductById(productUid) {
+        let ret = null;
+        for (let i = 0; i < this.products.length; i++) {
+            if (this.products[i].id === productUid) {
+                ret = this.products[i];
+                break;
+            }
+        }
+        return ret;
+    }
 }
 const store = new Store();
 const search = store.search.bind(store);
 const sort = store.sort.bind(store);
 const updateCategory = store.updateCategory.bind(store);
 const reset = store.reset.bind(store);
-export { store, search, sort, updateCategory, reset };
+const getProductById = store.getProductById.bind(store);
+export { store, search, sort, updateCategory, reset, getProductById };
