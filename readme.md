@@ -4,7 +4,7 @@ This project showcases how an online shop could be created using the MVVMC archi
 
 ## Roadmap
 
-- [ ] Store page
+- [x] Store page
     - [x] Search
     - [x] Sorting (Price High/Low & Rating High/Low)
     - [x] Filter by Category
@@ -12,7 +12,7 @@ This project showcases how an online shop could be created using the MVVMC archi
     - [x] Product card description
     - [x] Product card rating
     - [x] Add product to cart
-    - [ ] Skeleton frames
+    - [x] Skeleton frames
 - [x] Cart modal
     - [x] Display cart items
     - [x] Update cart item quantities

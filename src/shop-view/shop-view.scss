@@ -2,22 +2,8 @@ shop-view{
     width: 100%;
     position: relative;
 
-    &[state="loading"]{
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &[state="idling"]{
-        display: block;
-        
-        .container{
-            display: grid;
-        }
-    }
-
     .container{
-        display: none;
+        display: grid;
         grid-template-columns: repeat(auto-fit, 300px);
         gap: 1rem;
     }
