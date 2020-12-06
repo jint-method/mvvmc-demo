@@ -10,3 +10,7 @@ export type IProduct = {
     price: number;
     rating: number;
 }
+
+export interface ILineItem extends IProduct {
+    qty: number;
+}

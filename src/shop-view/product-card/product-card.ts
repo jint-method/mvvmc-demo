@@ -1,4 +1,5 @@
 import { Component } from "../../component";
+import { addLineItem } from "../../controllers/cart";
 
 type ProductCardState = {
     view: "primary" | "secondary";
@@ -16,7 +17,9 @@ export class ProductCard extends Component<ProductCardState>{
         this.toggleDescriptionButton = this.querySelector(".js-description-button");
     }
 
-    private addToCart:EventListener = ()=>{}
+    private addToCart:EventListener = ()=>{
+        addLineItem(this.dataset.id);
+    }
 
     private toggleDescription:EventListener = ()=>{
         this.setState({view: this.state.view === "primary" ? "secondary" : "primary"});

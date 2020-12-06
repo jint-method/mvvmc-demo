@@ -16,11 +16,11 @@
   "dependencies": {
     "brixi": "^0.2.3",
     "cssmonster": "^0.3.1",
-    "djinnjs": "^0.2.3",
+    "djinnjs": "^0.2.4",
     "gh-pages": "^3.1.0",
     "lit-html": "^1.3.0",
     "serve": "^11.3.2",
-    "snowpack": "^2.17.1",
+    "snowpack": "^2.18.1",
     "typescript": "^4.1.2",
     "wwibs": "^0.1.2"
   },
