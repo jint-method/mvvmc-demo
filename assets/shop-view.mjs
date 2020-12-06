@@ -39,11 +39,6 @@ export default class ShopView extends Component {
         const priceFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
         switch (this.state.view) {
             case "loading":
-                view = html `
-                    <svg-spinner class="font-primary-700">
-                        <svg style="width:32px;height:32px;" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M478.71 364.58zm-22 6.11l-27.83-15.9a15.92 15.92 0 0 1-6.94-19.2A184 184 0 1 1 256 72c5.89 0 11.71.29 17.46.83-.74-.07-1.48-.15-2.23-.21-8.49-.69-15.23-7.31-15.23-15.83v-32a16 16 0 0 1 15.34-16C266.24 8.46 261.18 8 256 8 119 8 8 119 8 256s111 248 248 248c98 0 182.42-56.95 222.71-139.42-4.13 7.86-14.23 10.55-22 6.11z" opacity="0.4"></path><path class="fa-primary" fill="currentColor" d="M271.23 72.62c-8.49-.69-15.23-7.31-15.23-15.83V24.73c0-9.11 7.67-16.78 16.77-16.17C401.92 17.18 504 124.67 504 256a246 246 0 0 1-25 108.24c-4 8.17-14.37 11-22.26 6.45l-27.84-15.9c-7.41-4.23-9.83-13.35-6.2-21.07A182.53 182.53 0 0 0 440 256c0-96.49-74.27-175.63-168.77-183.38z"></path></g></svg>
-                    </svg-spinner>
-                `;
                 break;
             default:
                 view = html `
@@ -55,7 +50,7 @@ export default class ShopView extends Component {
                                     <product-card class="bg-white border-1 border-solid border-grey-300 radius-0.5" view="primary" data-id="${product.id}">
                                         <card-content class="block w-full h-full">
                                             <img-shim>
-                                                <img draggable="false" src="/images/${product.image}" alt="${product.alt}" />
+                                                <img style="opacity:0;transition:all 300ms var(--ease-in-out);transform:scale(1.05);" onload="this.style.opacity = '1';this.style.transform = 'scale(1)';" width="250" loading="lazy" draggable="false" src="/images/${product.image}" alt="${product.alt}" />
                                             </img-shim>
                                             <h2 class="w-full line-snug text-capitalize font-medium" flex="justify-between row nowrap">
                                                 <span style="flex: 1;" class="inline-block font-grey-800">${product.title}</span>
