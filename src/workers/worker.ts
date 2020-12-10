@@ -100,7 +100,7 @@ class StoreWorker{
             return products;
         }
         let ret:Array<IProduct> = [];
-        const RegexQuery = new RegExp(this.state.query);
+        const RegexQuery = new RegExp(this.state.query, 'gi');
         for (let i = 0; i < products.length; i++){
             if (RegexQuery.test(products[i].title) || RegexQuery.test(products[i].description)){
                 ret.push(products[i]);

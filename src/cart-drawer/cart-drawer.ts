@@ -1,6 +1,6 @@
 import { html, render } from "lit-html";
 import { hookup } from "wwibs";
-import { Component } from "../component";
+import { Component } from "djinnjs/component";
 import { ILineItem } from "../types";
 
 import { CloseCartButton } from "./close-cart-button";

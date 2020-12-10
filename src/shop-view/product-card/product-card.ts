@@ -1,4 +1,4 @@
-import { Component } from "../../component";
+import { Component } from "djinnjs/component";
 import { addLineItem } from "../../controllers/cart";
 
 type ProductCardState = {

@@ -1,7 +1,7 @@
 import { hookup } from "wwibs";
 import { html, render } from "lit-html";
 import { IProduct } from "../types";
-import { Component } from "../component";
+import { Component } from "djinnjs/component";
 
 import { ProductCard } from "./product-card/product-card";
 customElements.define("product-card", ProductCard);
