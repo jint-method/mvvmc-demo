@@ -34,8 +34,6 @@ class Djinn {
         env.setDOMState("idling");
         utils = await import(`${location.origin}/${djinnjsOutDir}/djinn-utils.mjs`);
         utils.scrollOrResetPage();
-        
-        
     }
     async setup() {
         const envModule = await import(`${location.origin}/${djinnjsOutDir}/env.mjs`);

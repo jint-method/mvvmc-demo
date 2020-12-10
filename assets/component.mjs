@@ -4,6 +4,7 @@ export class Component extends HTMLElement {
     }
     setState(state) {
         this.state = Object.assign(this.state, state);
+        this.updated();
         this.render();
     }
     render() { }

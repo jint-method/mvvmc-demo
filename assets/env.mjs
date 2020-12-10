@@ -11,7 +11,7 @@ class Env {
         // Automatically removing 2 since DjinnJS has 2 critical web workers
         this.threadPool = this.cpu - 2;
         this.connection = "4g";
-        this.domState = "hard-loading";
+        this.domState = "loading";
         this.dataSaver = false;
         this.browser = "unknown";
         this.setBrowser();
@@ -47,7 +47,7 @@ class Env {
                 break;
             }
         }
-        if (this.tickets.length === 0 && this.domState === "soft-loading") {
+        if (this.tickets.length === 0 && this.domState === "loading") {
             this.domState = "idling";
             document.documentElement.setAttribute("state", this.domState);
         }
@@ -57,31 +57,13 @@ class Env {
      * @returns a ticket `string` that is required to stop the loading state.
      */
     startLoading() {
-        if (this.domState !== "hard-loading") {
-            this.domState = "soft-loading";
+        if (this.domState !== "loading") {
+            this.domState = "loading";
             document.documentElement.setAttribute("state", this.domState);
         }
         const ticket = this.uid();
         this.tickets.push(ticket);
         return ticket;
-    }
-    startPageTransition() {
-        this.domState = "page-loading";
-        document.documentElement.setAttribute("state", this.domState);
-    }
-    endPageTransition() {
-        this.domState = "page-loading-complete";
-        document.documentElement.setAttribute("state", this.domState);
-        setTimeout(() => {
-            if (this.tickets.length) {
-                this.domState = "soft-loading";
-                document.documentElement.setAttribute("state", this.domState);
-            }
-            else {
-                this.domState = "idling";
-                document.documentElement.setAttribute("state", this.domState);
-            }
-        }, 600);
     }
     /**
      * Quick and dirty unique ID generation.
