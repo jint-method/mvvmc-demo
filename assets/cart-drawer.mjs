@@ -82,20 +82,25 @@ export default class CartDrawer extends Component {
                 ${this.state.lineItems.map((lineItem) => {
             return html `
                         <line-item data-id="${lineItem.id}" data-qty="${lineItem.qty}">
-                            <h3>${lineItem.title}</h3>
-                            <h4>${lineItem.price} each</h4>
-                            <div class="w-full" flex="items-center">
-                                <button class="js-subtract button -primary -outline -round -icon-only" title="remove one ${lineItem.title.toLowerCase()}">
-                                    <i>
-                                        <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M376 232H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h368c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"></path></svg>
-                                    </i>
-                                </button>
-                                <span>${lineItem.qty}</span>
-                                <button class="js-add button -primary -outline -round -icon-only" title="add one ${lineItem.title.toLowerCase()}">
-                                    <i>
-                                        <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"></path></svg>
-                                    </i>
-                                </button>
+                            <img-shim>
+                                <img src="/images/${lineItem.image}" alt="${lineItem.alt}" width="150" loading="lazy" style="opacity:0;transition:all 300ms var(--ease-in-out);transform:scale(1.05);" onload="this.style.opacity = '1';this.style.transform = 'scale(1)';" draggable="false" />
+                            </img-shim>
+                            <div>
+                                <h3>${lineItem.title}</h3>
+                                <h4>${lineItem.price} each</h4>
+                                <div class="w-full" flex="items-center">
+                                    <button class="js-subtract button -primary -outline -round -icon-only" title="remove one ${lineItem.title.toLowerCase()}">
+                                        <i>
+                                            <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M376 232H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h368c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"></path></svg>
+                                        </i>
+                                    </button>
+                                    <span>${lineItem.qty}</span>
+                                    <button class="js-add button -primary -outline -round -icon-only" title="add one ${lineItem.title.toLowerCase()}">
+                                        <i>
+                                            <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z"></path></svg>
+                                        </i>
+                                    </button>
+                                </div>
                             </div>
                             <button class="js-delete delete button -text -danger -round -icon-only">
                                 <i>
