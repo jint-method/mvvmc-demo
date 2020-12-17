@@ -4,7 +4,11 @@ shop-view{
 
     .container{
         display: grid;
-        grid-template-columns: repeat(auto-fit, 300px);
+        grid-template-columns: repeat(auto-fit, minmax(0px, 400px));
         gap: 1rem;
+
+        @media (min-width: 768px){
+            grid-template-columns: repeat(auto-fit, minmax(0px, 300px));
+        }
     }
 }

@@ -51,6 +51,12 @@ header{
             }
         }
     }
+
+    @media (max-width: 768px){
+        .button{
+            display: none !important;
+        }
+    }
 }
 
 main{
@@ -58,6 +64,10 @@ main{
     max-width: calc(100% - 2rem);
     margin: 6rem auto 8rem;
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: minmax(0px, 1fr);
     gap: 2rem;
+
+    @media (min-width: 768px){
+        grid-template-columns: 300px 1fr;
+    }
 }
